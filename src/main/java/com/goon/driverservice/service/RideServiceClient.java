@@ -16,10 +16,12 @@ public class RideServiceClient {
 
     public void declineOffer(UUID offerId, UUID driverId){
 
-        rideRestClient.post()
+        rideRestClient.patch()
                 .uri("/internal/offers/{offerId}/decline",offerId)
                 .body(driverId)
                 .retrieve()
                 .toBodilessEntity();
     }
+
+
 }
