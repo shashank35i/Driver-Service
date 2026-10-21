@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface DriverRepository extends JpaRepository<Driver, UUID> {
 
-    Optional<Driver> findByEmail(String email);
+    Optional<Driver> findByEmailOrPhone(String email,String phone);
 
     boolean existsByEmail(String email);
 
