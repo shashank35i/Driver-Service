@@ -9,5 +9,6 @@ spring:
 
 
 app:
+  jwt-secret-key: 7y9V/kZ7P5xWb2NmTF9uK3R6VzRyUXBTMTR2WGNBbUo=
   ride-service:
     url:
