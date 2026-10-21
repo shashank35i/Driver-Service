@@ -1,4 +1,4 @@
-package security;
+package com.goon.driverservice.security;
 
 import com.goon.driverservice.service.Role;
 import io.jsonwebtoken.Jwts;

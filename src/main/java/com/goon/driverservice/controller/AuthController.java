@@ -1,5 +1,6 @@
 package com.goon.driverservice.controller;
 
+import com.goon.driverservice.security.AuthService;
 import com.goon.driverservice.service.LoginRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
