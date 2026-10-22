@@ -22,6 +22,15 @@ public class RideServiceClient {
                 .retrieve()
                 .toBodilessEntity();
     }
+    public AcceptOfferResponse acceptOffer(
+            UUID offerId,
+            AcceptOfferRequest request) {
 
+        return rideRestClient.post()
+                .uri("/internal/offers/{offerId}/accept", offerId)
+                .body(request)
+                .retrieve()
+                .body(AcceptOfferResponse.class);
+    }
 
 }
