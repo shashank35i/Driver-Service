@@ -4,7 +4,15 @@ server:
 spring:
   application:
     name: driver-service
-
+  datasource:
+    url: jdbc:mysql://localhost:3306/driver_db?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+    username: root
+    password: Shashank3549
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.jdbc.time_zone: UTC
 
 
 
