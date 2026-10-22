@@ -76,7 +76,6 @@ public class AuthService {
                 .phone(request.phone())
                 .passwordHash(passwordEncoder.encode(request.password()))
                 .licenseNumber(license)
-                .approvalStatus(DriverApprovalStatus.PENDING)
                 .build();
 
         repository.save(driver);

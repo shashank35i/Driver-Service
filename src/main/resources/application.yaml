@@ -4,6 +4,19 @@ server:
 spring:
   application:
     name: driver-service
+  security:
+    oauth2:
+      client:
+        registration:
+          goon-internal:
+            provider: goon-keycloak
+            client-id: ${GOON_SERVICE_CLIENT_ID:driver-service}
+            client-secret: ${GOON_SERVICE_CLIENT_SECRET}
+            authorization-grant-type: client_credentials
+            scope: offers.decline
+        provider:
+          goon-keycloak:
+            issuer-uri: ${GOON_KEYCLOAK_ISSUER}
   datasource:
     url: jdbc:mysql://localhost:3306/driver_db?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
     username: root
@@ -13,7 +26,10 @@ spring:
       ddl-auto: update
     properties:
       hibernate.jdbc.time_zone: UTC
+logging:
+  level:
 
+    org.springframework.web: DEBUG
 
 
 app:

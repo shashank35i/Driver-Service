@@ -1,4 +1,4 @@
-package com.goon.driverservice.security;
+package com.goon.driverservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
