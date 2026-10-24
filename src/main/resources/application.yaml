@@ -6,14 +6,15 @@ spring:
     name: driver-service
   security:
     oauth2:
-      client:
+      client:                          #caller
         registration:
           goon-internal:
             provider: goon-keycloak
             client-id: ${GOON_SERVICE_CLIENT_ID:driver-service}
             client-secret: ${GOON_SERVICE_CLIENT_SECRET}
             authorization-grant-type: client_credentials
-            scope: offers.decline
+            scope:
+              - offers.decline
         provider:
           goon-keycloak:
             issuer-uri: ${GOON_KEYCLOAK_ISSUER}
@@ -35,4 +36,4 @@ logging:
 app:
   jwt-secret-key: 7y9V/kZ7P5xWb2NmTF9uK3R6VzRyUXBTMTR2WGNBbUo=
   ride-service:
-    url:
+    url: http://localhost:8083
