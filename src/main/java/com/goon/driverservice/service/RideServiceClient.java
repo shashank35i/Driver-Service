@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -33,4 +34,14 @@ public class RideServiceClient {
                 .body(AcceptOfferResponse.class);
     }
 
+    public Instant markArrived(
+            UUID rideId,
+            UUID driverId
+    ){
+       return rideRestClient.post()
+                .uri("/internal/{rideId}/arrived",rideId)
+                .body(driverId)
+                .retrieve()
+                .body(Instant.class);
+    }
 }
