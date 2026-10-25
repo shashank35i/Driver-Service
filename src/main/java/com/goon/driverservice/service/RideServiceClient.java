@@ -1,7 +1,8 @@
 package com.goon.driverservice.service;
 
-import com.goon.driverservice.StartResult;
-import com.goon.driverservice.config.RestClientConfig;
+import com.goon.driverservice.dto.response.StartResult;
+import com.goon.driverservice.dto.request.AcceptOfferRequest;
+import com.goon.driverservice.dto.response.AcceptOfferResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;

@@ -1,4 +1,4 @@
-package com.goon.driverservice;
+package com.goon.driverservice.dto.response;
 
 
 import java.time.Instant;

@@ -2,9 +2,8 @@ package com.goon.driverservice.security;
 
 import com.goon.driverservice.entity.Driver;
 import com.goon.driverservice.repository.DriverRepository;
-import com.goon.driverservice.service.DriverApprovalStatus;
-import com.goon.driverservice.service.LoginRequest;
-import com.goon.driverservice.service.RegisterRequest;
+import com.goon.driverservice.dto.request.LoginRequest;
+import com.goon.driverservice.dto.request.RegisterRequest;
 import com.goon.driverservice.service.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

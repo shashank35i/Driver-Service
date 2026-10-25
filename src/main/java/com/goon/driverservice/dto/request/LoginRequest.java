@@ -1,4 +1,4 @@
-package com.goon.driverservice.service;
+package com.goon.driverservice.dto.request;
 
 public record
 LoginRequest(

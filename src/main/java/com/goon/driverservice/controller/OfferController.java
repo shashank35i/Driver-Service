@@ -1,5 +1,7 @@
 package com.goon.driverservice.controller;
 
+import com.goon.driverservice.dto.request.AcceptOfferRequest;
+import com.goon.driverservice.dto.response.AcceptOfferResponse;
 import com.goon.driverservice.entity.Driver;
 import com.goon.driverservice.entity.Vehicle;
 import com.goon.driverservice.repository.DriverRepository;
