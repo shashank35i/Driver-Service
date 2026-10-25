@@ -1,5 +1,6 @@
 package com.goon.driverservice.service;
 
+import com.goon.driverservice.StartResult;
 import com.goon.driverservice.config.RestClientConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,18 @@ public class RideServiceClient {
                 .body(driverId)
                 .retrieve()
                 .body(Instant.class);
+    }
+
+    public StartResult start(
+            UUID rideId,
+            UUID driverId,
+            String otp
+    ){
+        return rideRestClient.post()
+                .uri("/{rideId}/start",rideId)
+                .body(new StartRequest(driverId,otp))
+                .retrieve()
+                .body(StartResult.class);
+
     }
 }
