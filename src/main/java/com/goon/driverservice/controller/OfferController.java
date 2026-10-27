@@ -48,7 +48,7 @@ public class OfferController {
         AcceptOfferRequest request = new AcceptOfferRequest(
                 driverId,
                 driver.getName(),
-                vehicle.getVehicleModel(),
+                vehicle.getVehicleType(),
                 vehicle.getVehicleNumber()
         );
 

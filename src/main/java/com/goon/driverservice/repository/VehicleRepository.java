@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
 
     Optional<Vehicle> findByDriverId(UUID driverId);
+    boolean existsByDriverId(UUID driverId);
 }

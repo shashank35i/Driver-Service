@@ -16,6 +16,7 @@ public class VehicleController {
 
     private final VehicleService vehicleService;
 
+
     @PostMapping
     public ResponseEntity<Vehicle> addVehicle(
             @RequestHeader("X-User-Id") UUID driverId,
