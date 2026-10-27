@@ -21,8 +21,9 @@ public class Vehicle {
     @Column(nullable = false)
     private UUID driverId;
 
-    @Column(nullable = false)
-    private String vehicleModel;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 32)
+    private VehicleType vehicleType;
 
     @Column(nullable = false, unique = true)
     private String vehicleNumber;

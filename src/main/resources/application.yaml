@@ -10,14 +10,14 @@ spring:
         registration:
           goon-internal:
             provider: goon-keycloak
-            client-id: ${GOON_SERVICE_CLIENT_ID:driver-service}
-            client-secret: ${GOON_SERVICE_CLIENT_SECRET}
+            client-id: goon-services
+            client-secret: G2Wc2qAtPASfbgGj7kdMEo8w8K4ZVaq6idKGlCqINeQW8BpWprYmltTlI9SqDIWIBe4xRdogXo2nVDPEiG2Flm
             authorization-grant-type: client_credentials
             scope:
               - offers.decline
         provider:
           goon-keycloak:
-            issuer-uri: ${GOON_KEYCLOAK_ISSUER}
+            issuer-uri: http://localhost:8090/realms/goon-internal-auth
   datasource:
     url: jdbc:mysql://localhost:3306/driver_db?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
     username: root
