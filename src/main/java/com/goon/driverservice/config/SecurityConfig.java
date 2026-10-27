@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                         .requestMatchers("/auth/register","/auth/login").permitAll()
+                        .requestMatchers("/api/driver/**", "/offers/**").permitAll()
                         .anyRequest().denyAll()
                 )
                 .build();
