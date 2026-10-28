@@ -18,7 +18,15 @@ public class RestClientConfig {
         return builder
                 .baseUrl(url)
                 .requestInterceptor((request, body, execution) -> {
-                    request.getHeaders().setBearerAuth(tokenProvider.getAccessToken());
+                    String path = request.getURI().getPath();
+                    String registrationId;
+                    if (path.endsWith("/accept")) registrationId = "goon-offers-accept";
+                    else if (path.endsWith("/decline")) registrationId = "goon-offers-decline";
+                    else if (path.endsWith("/arrived")) registrationId = "goon-rides-arrive";
+                    else if (path.endsWith("/start")) registrationId = "goon-rides-start";
+                    else if (path.endsWith("/end")) registrationId = "goon-rides-end";
+                    else throw new IllegalStateException("No service-token registration for " + path);
+                    request.getHeaders().setBearerAuth(tokenProvider.getAccessToken(registrationId));
                     return execution.execute(request, body);
                 })
                 .build();

@@ -16,16 +16,40 @@ spring:
           audiences: driver-service
       client:                          #caller
         registration:
-          goon-internal:
+          goon-offers-decline:
             provider: goon-keycloak
             client-id: goon-services
             client-secret: G2Wc2qAtPASfbgGj7kdMEo8w8K4ZVaq6idKGlCqINeQW8BpWprYmltTlI9SqDIWIBe4xRdogXo2nVDPEiG2Flm
             authorization-grant-type: client_credentials
             scope:
               - offers.decline
+          goon-offers-accept:
+            provider: goon-keycloak
+            client-id: goon-services
+            client-secret: ${spring.security.oauth2.client.registration.goon-offers-decline.client-secret}
+            authorization-grant-type: client_credentials
+            scope:
               - offers.accept
+          goon-rides-arrive:
+            provider: goon-keycloak
+            client-id: goon-services
+            client-secret: ${spring.security.oauth2.client.registration.goon-offers-decline.client-secret}
+            authorization-grant-type: client_credentials
+            scope:
               - rides.arrive
+          goon-rides-start:
+            provider: goon-keycloak
+            client-id: goon-services
+            client-secret: ${spring.security.oauth2.client.registration.goon-offers-decline.client-secret}
+            authorization-grant-type: client_credentials
+            scope:
               - rides.start
+          goon-rides-end:
+            provider: goon-keycloak
+            client-id: goon-services
+            client-secret: ${spring.security.oauth2.client.registration.goon-offers-decline.client-secret}
+            authorization-grant-type: client_credentials
+            scope:
               - rides.end
         provider:
           goon-keycloak:
