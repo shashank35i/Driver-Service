@@ -16,6 +16,17 @@ public class RideServiceClient {
 
     private final RestClient rideRestClient;
 
+    public org.springframework.http.ResponseEntity<com.goon.driverservice.dto.response.EndRideResponse> end(
+            UUID rideId, UUID driverId) {
+        return rideRestClient.post().uri("/internal/rides/{rideId}/end", rideId)
+                .body(driverId).retrieve()
+                .onStatus(org.springframework.http.HttpStatusCode::isError, (request, response) -> {
+                    throw new org.springframework.web.server.ResponseStatusException(
+                            response.getStatusCode(), "Ride completion failed");
+                })
+                .toEntity(com.goon.driverservice.dto.response.EndRideResponse.class);
+    }
+
 
     public void declineOffer(UUID offerId, UUID driverId){
 
@@ -41,7 +52,7 @@ public class RideServiceClient {
             UUID driverId
     ){
        return rideRestClient.post()
-                .uri("/internal/{rideId}/arrived",rideId)
+                .uri("/internal/rides/{rideId}/arrived",rideId)
                 .body(driverId)
                 .retrieve()
                 .body(Instant.class);
@@ -53,7 +64,7 @@ public class RideServiceClient {
             String otp
     ){
         return rideRestClient.post()
-                .uri("/{rideId}/start",rideId)
+                .uri("/internal/rides/{rideId}/start",rideId)
                 .body(new StartRequest(driverId,otp))
                 .retrieve()
                 .body(StartResult.class);

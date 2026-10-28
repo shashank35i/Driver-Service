@@ -3,6 +3,7 @@ package com.goon.driverservice.controller;
 import com.goon.driverservice.dto.response.StartResult;
 import com.goon.driverservice.service.RideServiceClient;
 import com.goon.driverservice.service.StartRequest;
+import com.goon.driverservice.repository.DriverAssignmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,18 @@ import java.util.UUID;
 public class RideLifecycleController {
 
     private final RideServiceClient rideServiceClient;
+    private final DriverAssignmentRepository driverAssignmentRepository;
+
+    @PostMapping("/{rideId}/end")
+    public ResponseEntity<com.goon.driverservice.dto.response.EndRideResponse> end(
+            @PathVariable UUID rideId, @RequestHeader("X-User-Id") UUID driverId) {
+        ResponseEntity<com.goon.driverservice.dto.response.EndRideResponse> response =
+                rideServiceClient.end(rideId, driverId);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            driverAssignmentRepository.releaseRide(driverId, rideId);
+        }
+        return response;
+    }
 
     @PostMapping("/{rideId}/arrived")
     public ResponseEntity<Instant> markDriverArrived(

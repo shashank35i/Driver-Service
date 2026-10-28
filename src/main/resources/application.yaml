@@ -10,6 +10,10 @@ spring:
       host: localhost
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090/realms/goon-internal-auth
+          audiences: driver-service
       client:                          #caller
         registration:
           goon-internal:
@@ -19,6 +23,10 @@ spring:
             authorization-grant-type: client_credentials
             scope:
               - offers.decline
+              - offers.accept
+              - rides.arrive
+              - rides.start
+              - rides.end
         provider:
           goon-keycloak:
             issuer-uri: http://localhost:8090/realms/goon-internal-auth
